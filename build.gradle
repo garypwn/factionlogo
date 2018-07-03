@@ -1,0 +1,61 @@
+apply plugin: "java-library"
+apply plugin: "maven"
+apply plugin: "com.github.johnrengelman.shadow"
+
+compileJava.options.encoding = "UTF-8"
+
+allprojects {
+	version = "0.1-SNAPSHOT"
+	group = "net.comecraft"
+}
+
+buildscript {
+	repositories {
+		jcenter()
+	}
+	dependencies {
+		classpath "com.github.jengelman.gradle.plugins:shadow:2.0.0"
+	}
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+	
+	maven { url "https://hub.spigotmc.org/nexus/content/groups/public/" }
+}
+
+dependencies {
+
+	compileOnly group: "org.spigotmc", name: "spigot-api", version: "1.12.2-R0.1-SNAPSHOT";
+}
+
+jar {
+	manifest {
+		attributes(
+			"Class-Path": configurations.compile.collect { it.getName() }.join(" "),
+			"Main-Class": "net.comecraft.factionlogo.FactionLogoPlugin"
+		)
+	}
+}
+
+processResources {
+	// Variables to replace
+	inputs.property "version", project.version
+	
+	// Resources with replace
+	from (sourceSets.main.resources.srcDirs) {
+		
+		include "plugin.yml"
+
+		// Replace version
+		expand "version": project.version
+	}
+
+	// Resources w/o replace
+	from (sourceSets.main.resources.srcDirs) {
+		exclude "plugin.yml"
+	}
+}

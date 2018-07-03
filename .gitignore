@@ -1,0 +1,23 @@
+# Eclipse 
+/.classpath
+/.project
+/.settings
+
+# Netbeans
+/nbproject
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Gradle
+.gradle
+gradle-app.setting
+!gradle-wrapper.jar
+.gradletasknamecache
+
+# Build files
+/build
+/bin
