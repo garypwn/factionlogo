@@ -13,7 +13,7 @@ public interface Faction {
 	 * Gets the unique identifier for this faction.
 	 * @return The unique id for this faction.
 	 */
-	public int getId();
+	public String getId();
 	
 	/**
 	 * Gets the name of this faction.

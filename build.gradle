@@ -30,6 +30,7 @@ repositories {
 dependencies {
 
 	compileOnly group: "org.spigotmc", name: "spigot-api", version: "1.12.2-R0.1-SNAPSHOT";
+	compileOnly files("lib/LegacyFactions.jar")
 }
 
 jar {

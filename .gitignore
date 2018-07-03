@@ -18,6 +18,8 @@ gradle-app.setting
 !gradle-wrapper.jar
 .gradletasknamecache
 
+
 # Build files
 /build
 /bin
+/lib

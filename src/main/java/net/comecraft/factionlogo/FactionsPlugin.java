@@ -33,10 +33,10 @@ public abstract class FactionsPlugin {
 	 * Gets a faction from a unique identifier.
 	 * 
 	 * @param id
-	 *            The factions unique identification number.
+	 *            The factions unique identifier.
 	 * @return The faction, or an empty optional if no faction with this id exists.
 	 */
-	public abstract Optional<Faction> getFactionById(int id);
+	public abstract Optional<Faction> getFactionById(String id);
 
 	/**
 	 * Gets a the faction that a player is in.
