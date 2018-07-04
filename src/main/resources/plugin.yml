@@ -2,3 +2,4 @@ name: factionlogo
 main: net.comecraft.factionlogo.FactionLogoPlugin
 author: garypwn
 version: ${version}
+softdepend: [LegacyFactions, Factions]
