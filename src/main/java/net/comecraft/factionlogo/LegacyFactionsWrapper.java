@@ -33,9 +33,12 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 
 	@Override
 	public Collection<Faction> getFactionCollection() {
-		
-		// For each redstoneore.legacyfactions.entity.Faction, map it to our wrapper class.
-		return FactionColl.all().stream().map(LegacyFactionsWrapper::getFactionWrapper).collect(Collectors.toSet());
+		return FactionColl.all()
+				.stream()
+				
+				// Wrap each legacyfaction with our wrapper
+				.map(LegacyFactionsWrapper::getFactionWrapper)
+				.collect(Collectors.toSet());
 	}
 
 	@Override
