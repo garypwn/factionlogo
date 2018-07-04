@@ -16,19 +16,22 @@ import net.comecraft.factionlogo.wrapper.FactionsPlugin;
 
 public class SetLogo implements CommandExecutor {
 
-	private FileConfiguration langFile;
+	private FileConfiguration lang;
 	private FactionsPlugin factions;
 	private Logos logos;
 	
 	public SetLogo(FileConfiguration lang, FactionsPlugin factions, Logos logos) {
 		super();
-		this.langFile = lang;
+		this.lang = lang;
 		this.factions = factions;
 		this.logos = logos;
 	}
 	
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		
+		//Check that sender included required arguments
+		if (args.length < 2) return false;
 		
 		Optional<Faction> target;
 		
@@ -42,7 +45,7 @@ public class SetLogo implements CommandExecutor {
 		
 		// Give up
 		if (!target.isPresent()) {
-			sender.sendMessage(langFile.getString("setlogo.notfound"));
+			sender.sendMessage(lang.getString("setlogo.notfound"));
 			return false;
 		}
 		
@@ -60,7 +63,7 @@ public class SetLogo implements CommandExecutor {
 		
 		// Player is factionless
 		if (!target.isPresent()) {
-			player.sendMessage(langFile.getString("setlogo.notfound"));
+			player.sendMessage(lang.getString("setlogo.notfound"));
 		}
 		
 		setLogo(player, target.get(), logo);
@@ -75,11 +78,35 @@ public class SetLogo implements CommandExecutor {
 	 */
 	public boolean setLogo(CommandSender sender, Faction faction, String logo) {
 		
+		// Check availability
+		if (!logos.isAvailable(logo)) {
+			sender.sendMessage(lang.getString("setlogo.taken"));
+			return true;
+		}
+		
+		// Check length
+		if (logo.length() > 1) {
+			sender.sendMessage(lang.getString("setlogo.wronglength"));
+			return true;
+		}
+		
+		// Check for illegal characters
+		if (logo.contains("&")) {
+			sender.sendMessage(lang.getString("setlogo.illegalcharacter"));
+		}
+		
+		// Set the new logo
+		logos.setLogo(faction.getId(), logo);
+		
+		// Notify members
+		String message = String.format(lang.getString("setlogo.success"), sender.getName(), faction.getName(), logo);
+		faction.getMembers().forEach(player -> player.sendMessage(message));
+		
 		return true;
 	}
 	
 	public FileConfiguration getLang() {
-		return langFile;
+		return lang;
 	}
 
 	/**
