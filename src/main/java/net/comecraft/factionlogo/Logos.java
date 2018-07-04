@@ -19,8 +19,13 @@ public class Logos {
 		return false;
 	}
 	
+	/**
+	 * Sets the logo for the given faction id.
+	 * @param id The id of the faction to set the logo for.
+	 * @param logo The faction's logo.
+	 */
 	public void setLogo(String id, String logo) {
-		// TODO
+		logoFile.set(id, logo);
 	}
 	
 	/**
