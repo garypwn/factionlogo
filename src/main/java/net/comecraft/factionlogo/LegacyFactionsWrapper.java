@@ -52,8 +52,19 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 
 	@Override
 	public Optional<Faction> getFactionByMember(Player player) {
-		Faction faction = getFactionWrapper(FactionColl.get(player));
-		return Optional.ofNullable(faction);
+		
+		// (Hopefully) get the player's faction
+		net.redstoneore.legacyfactions.entity.Faction legacyFaction = FactionColl.get(player);
+		
+		// If unsuccessful, return empty
+		if (legacyFaction == null) return Optional.empty();
+		
+		// If player is factionless, return empty
+		if (FactionColl.get().getWilderness().equals(legacyFaction)) return Optional.empty();
+		
+		// Return our faction wrapper
+		Faction faction = getFactionWrapper(legacyFaction);
+		return Optional.of(faction);
 	}
 	
 	/**
