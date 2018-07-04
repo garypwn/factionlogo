@@ -75,9 +75,6 @@ public class SetLogo implements CommandExecutor {
 	 */
 	public boolean setLogo(CommandSender sender, Faction faction, String logo) {
 		
-		// Cleanup logos before checking availability
-		logos.cleanupLogos();
-		
 		return true;
 	}
 	
