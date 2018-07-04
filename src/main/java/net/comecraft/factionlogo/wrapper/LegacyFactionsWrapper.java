@@ -96,7 +96,7 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 			
 			@Override
 			public String getUsageTranslation() {
-				return command.getFCommandDescription();
+				return command.getLang().getString("setlogo.description");
 			}
 
 			@Override
