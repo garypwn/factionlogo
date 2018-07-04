@@ -10,6 +10,7 @@ import org.bukkit.plugin.Plugin;
 
 import net.comecraft.factionlogo.SetLogo;
 import net.redstoneore.legacyfactions.FactionsPluginBase;
+import net.redstoneore.legacyfactions.Permission;
 import net.redstoneore.legacyfactions.cmd.CmdFactions;
 import net.redstoneore.legacyfactions.cmd.FCommand;
 import net.redstoneore.legacyfactions.entity.FPlayer;
@@ -78,16 +79,29 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 	public void registerSubCommand(SetLogo command) {
 		CmdFactions.get().addSubCommand(new FCommand() {
 
+			// Initialize
+			{
+				// Add our command's aliases and args
+				this.aliases.addAll(command.getFCommandAliases());
+				this.requiredArgs.addAll(command.getFCommandArgs());
+
+				// Copied from /f tag
+				this.permission = Permission.TAG.getNode();
+				this.disableOnLock = true;
+				this.senderMustBePlayer = true;
+				this.senderMustBeMember = false;
+				this.senderMustBeModerator = true;
+				this.senderMustBeAdmin = false;
+			}
+			
 			@Override
 			public String getUsageTranslation() {
-				// TODO Auto-generated method stub
-				return null;
+				return command.getFCommandDescription();
 			}
 
 			@Override
 			public void perform() {
-				// TODO Auto-generated method stub
-				
+				command.setLogo(me, this.argAsString(0));
 			}		
 		});
 	}

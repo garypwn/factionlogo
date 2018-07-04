@@ -1,5 +1,7 @@
 package net.comecraft.factionlogo;
 
+import java.util.Collection;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -21,5 +23,20 @@ public class SetLogo implements CommandExecutor {
 	
 	public void setLogo(Player player, String logo) {
 		// TODO
+	}
+
+	public Collection<String> getFCommandAliases() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Collection<? extends String> getFCommandArgs() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getFCommandDescription() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

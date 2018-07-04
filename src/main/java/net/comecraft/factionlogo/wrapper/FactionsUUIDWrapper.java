@@ -12,6 +12,7 @@ import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.P;
 import com.massivecraft.factions.cmd.FCommand;
+import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.zcore.util.TL;
 
 import net.comecraft.factionlogo.SetLogo;
@@ -92,16 +93,30 @@ public class FactionsUUIDWrapper extends FactionsPlugin {
 	public void registerSubCommand(SetLogo command) {
 		factionsPlugin.cmdBase.addSubCommand(new FCommand() {
 
+			// Initialize
+			{
+				// Add our command's aliases and args
+				this.aliases.addAll(command.getFCommandAliases());
+				this.requiredArgs.addAll(command.getFCommandArgs());
+				
+				// Copied from /f tag
+				this.permission = Permission.TAG.node;
+				this.disableOnLock = true;
+				senderMustBePlayer = true;
+				senderMustBeMember = false;
+				senderMustBeModerator = true;
+				senderMustBeAdmin = false;				
+			}
+			
 			@Override
 			public TL getUsageTranslation() {
-				// TODO Auto-generated method stub
-				return null;
+				// I don't have the hacks for this. Why can't this just be a string?
+				return TL.COMMAND_TAG_DESCRIPTION;
 			}
 
 			@Override
 			public void perform() {
-				// TODO Auto-generated method stub
-				
+				command.setLogo(me, this.argAsString(0));		
 			}		
 		});
 	}
