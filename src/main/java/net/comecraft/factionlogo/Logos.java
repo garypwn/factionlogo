@@ -30,7 +30,6 @@ public class Logos {
 	 */
 	public void setLogo(String id, String logo) {
 		logoFile.set(id, logo);
-		cleanupLogos();
 	}
 	
 	/**

@@ -18,11 +18,13 @@ public class SetLogo implements CommandExecutor {
 
 	private FileConfiguration langFile;
 	private FactionsPlugin factions;
+	private Logos logos;
 	
-	public SetLogo(FileConfiguration lang, FactionsPlugin factions) {
+	public SetLogo(FileConfiguration lang, FactionsPlugin factions, Logos logos) {
 		super();
 		this.langFile = lang;
 		this.factions = factions;
+		this.logos = logos;
 	}
 	
 	@Override
@@ -72,6 +74,10 @@ public class SetLogo implements CommandExecutor {
 	 * @return true if successful.
 	 */
 	public boolean setLogo(CommandSender sender, Faction faction, String logo) {
+		
+		// Cleanup logos before checking availability
+		logos.cleanupLogos();
+		
 		return true;
 	}
 	
