@@ -23,9 +23,13 @@ public class Logos {
 		// TODO
 	}
 	
+	/**
+	 * Gets the logo for the given faction id.
+	 * @param id The id of the faction to get the logo for.
+	 * @return The faction's logo.
+	 */
 	public String getLogo(String id) {
-		// TODO
-		return null;
+		return logoFile.getString(id);
 	}
 	
 	public void cleanupLogos() {
