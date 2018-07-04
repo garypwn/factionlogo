@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.InvalidPluginException;
+import org.bukkit.plugin.Plugin;
 
 /**
  * FactionsPlugin is a wrapper for the server's factions plugin. It provides
@@ -55,9 +57,29 @@ public abstract class FactionsPlugin {
 	 *            The server to get the FactionsPlugin for.
 	 * @return A wrapper for this server's factions plugin, or null if there is no
 	 *         supported factions plugin installed.
+	 * @throws InvalidPluginException 
 	 */
 	public static FactionsPlugin getFactionsPlugin(Server server) {
-		// TODO
-		return null;
+		
+		// Check for legacy factions
+		Plugin legacyFactions = server.getPluginManager().getPlugin("LegacyFactions");
+		if (legacyFactions != null) {
+			try {
+				return new LegacyFactionsWrapper(legacyFactions);
+			} catch (InvalidPluginException e) {
+				server.getLogger().warning("[factionlogo] failed to hook into LegacyFactions");
+			}
+		}
+		
+		// Check for factionsuuid/massivecraft factions
+		Plugin factions = server.getPluginManager().getPlugin("Factions");
+		if (!(factions == null)) {
+			try {
+				return new FactionsUUIDWrapper(factions);
+			} catch (InvalidPluginException e) {
+				server.getLogger().warning("[factionlogo] failed to hook into Factions");
+			}
+		}
+		return null;	
 	}
 }

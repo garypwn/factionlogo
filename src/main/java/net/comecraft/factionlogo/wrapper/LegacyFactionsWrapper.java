@@ -5,8 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
-
 import net.redstoneore.legacyfactions.FactionsPluginBase;
 import net.redstoneore.legacyfactions.entity.FPlayer;
 import net.redstoneore.legacyfactions.entity.FactionColl;
@@ -25,9 +25,9 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 	 *             if the plugin is not an instance of
 	 *             redstoneore.legacyfactions.FactionsPluginBase
 	 */
-	protected LegacyFactionsWrapper(Plugin plugin) throws ClassCastException {
+	protected LegacyFactionsWrapper(Plugin plugin) throws InvalidPluginException {
 		if (!(plugin instanceof FactionsPluginBase)) {
-			throw new ClassCastException();
+			throw new InvalidPluginException();
 		}
 	}
 

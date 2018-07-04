@@ -5,8 +5,8 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.bukkit.entity.Player;
+import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
-
 import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Factions;
@@ -26,9 +26,9 @@ public class FactionsUUIDWrapper extends FactionsPlugin {
 	 *             if the plugin is not an instance of com.massivecraft.factions
 	 *             
 	 */
-	protected FactionsUUIDWrapper(Plugin plugin) throws ClassCastException {
+	protected FactionsUUIDWrapper(Plugin plugin) throws InvalidPluginException {
 		if (!(plugin instanceof P)) {
-			throw new ClassCastException();
+			throw new InvalidPluginException();
 		}
 	}
 	
