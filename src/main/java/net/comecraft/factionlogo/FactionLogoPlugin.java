@@ -30,7 +30,12 @@ public class FactionLogoPlugin extends JavaPlugin {
 		}
 		
 		// Get resource files
-		this.lang = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "lang.yml"));
+		File langFile = new File(getDataFolder(), "lang.yml");
+		if (!langFile.exists()) {
+			this.saveResource("lang.yml", false);
+		}
+		
+		this.lang = YamlConfiguration.loadConfiguration(langFile);
 		
 		FileConfiguration logoFile = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "logos.yml"));
 		

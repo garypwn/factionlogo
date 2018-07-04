@@ -1,0 +1,7 @@
+setlogo:
+  notfound: Faction not found
+  taken: That logo is already in use
+  illegalcharacter: Logo cannot contain illegal characters
+  wronglength: Logo must be one character long
+  success: %1$s set the logo for %2$s to %3$s
+  description: Set the faction logo
