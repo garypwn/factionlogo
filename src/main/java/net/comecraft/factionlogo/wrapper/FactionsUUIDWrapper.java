@@ -1,4 +1,4 @@
-package net.comecraft.factionlogo;
+package net.comecraft.factionlogo.wrapper;
 
 import java.util.Collection;
 import java.util.Optional;
