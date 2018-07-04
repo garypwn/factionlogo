@@ -14,9 +14,13 @@ public class Logos {
 		this.factions = factions;
 	}
 
+	/**
+	 * Checks whether a logo is available.
+	 * @param logo The logo to check the availiability of.
+	 * @return true if the logo is available.
+	 */
 	public boolean isAvailable(String logo) {
-		// TODO
-		return false;
+		return !logoFile.getValues(false).values().contains(logo);
 	}
 	
 	/**
