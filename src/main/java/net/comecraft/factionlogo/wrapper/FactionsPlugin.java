@@ -79,7 +79,7 @@ public abstract class FactionsPlugin {
 			try {
 				FactionsPlugin wrapper = new FactionsUUIDWrapper(factions);
 				server.getLogger().info("[factionlogo] hooked into Factions.");
-				return new FactionsUUIDWrapper(factions);
+				return wrapper;
 			} catch (InvalidPluginException e) {
 				server.getLogger().warning("[factionlogo] failed to hook into Factions.");
 			}
