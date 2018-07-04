@@ -11,12 +11,18 @@ import com.massivecraft.factions.FPlayer;
 import com.massivecraft.factions.FPlayers;
 import com.massivecraft.factions.Factions;
 import com.massivecraft.factions.P;
+import com.massivecraft.factions.cmd.FCommand;
+import com.massivecraft.factions.zcore.util.TL;
+
+import net.comecraft.factionlogo.SetLogo;
 
 /**
  * A wrapper for drtshock/factions
  */
 public class FactionsUUIDWrapper extends FactionsPlugin {
 
+	private P factionsPlugin;
+	
 	/**
 	 * Create a wrapper for drtshock/factions
 	 * 
@@ -30,6 +36,7 @@ public class FactionsUUIDWrapper extends FactionsPlugin {
 		if (!(plugin instanceof P)) {
 			throw new InvalidPluginException();
 		}
+		this.factionsPlugin = (P) plugin;
 	}
 	
 	@Override
@@ -79,6 +86,24 @@ public class FactionsUUIDWrapper extends FactionsPlugin {
 		// Return our faction wrapper
 		Faction faction = getFactionWrapper(mFaction);
 		return Optional.of(faction);
+	}
+
+	@Override
+	public void registerSubCommand(SetLogo command) {
+		factionsPlugin.cmdBase.addSubCommand(new FCommand() {
+
+			@Override
+			public TL getUsageTranslation() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void perform() {
+				// TODO Auto-generated method stub
+				
+			}		
+		});
 	}
 
 	/**

@@ -7,7 +7,11 @@ import java.util.stream.Collectors;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
+
+import net.comecraft.factionlogo.SetLogo;
 import net.redstoneore.legacyfactions.FactionsPluginBase;
+import net.redstoneore.legacyfactions.cmd.CmdFactions;
+import net.redstoneore.legacyfactions.cmd.FCommand;
 import net.redstoneore.legacyfactions.entity.FPlayer;
 import net.redstoneore.legacyfactions.entity.FactionColl;
 
@@ -70,6 +74,24 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 		return Optional.of(faction);
 	}
 	
+	@Override
+	public void registerSubCommand(SetLogo command) {
+		CmdFactions.get().addSubCommand(new FCommand() {
+
+			@Override
+			public String getUsageTranslation() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+
+			@Override
+			public void perform() {
+				// TODO Auto-generated method stub
+				
+			}		
+		});
+	}
+
 	/**
 	 * Wraps a legacyfactions faction with our wrapper class.
 	 * @param faction a legacyfactions faction

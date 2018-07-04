@@ -8,6 +8,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 
+import net.comecraft.factionlogo.SetLogo;
+
 /**
  * FactionsPlugin is a wrapper for the server's factions plugin. It provides
  * consistent API methods regardless of which factions plugin the server has
@@ -49,6 +51,14 @@ public abstract class FactionsPlugin {
 	 *         factionless.
 	 */
 	public abstract Optional<Faction> getFactionByMember(Player player);
+	
+	/**
+	 * Registers a subcommand in the factions plugin.
+	 * 
+	 * @param command
+	 *            The subcommand to register.
+	 */
+	public abstract void registerSubCommand(SetLogo command);
 
 	/**
 	 * Gets the FactionsPlugin for a server.
