@@ -41,7 +41,17 @@ public class Logos {
 		return logoFile.getString(id);
 	}
 	
+	/**
+	 * Remove logos for nonexistent factions.
+	 */
 	public void cleanupLogos() {
-		// TODO
+		
+		logoFile.getKeys(false).stream()
+
+				// Filter out entries for factions that actually exist.
+				.filter(faction -> !factions.getFactionById(faction).isPresent())
+
+				// Remove entries for factions that don't exist.
+				.forEach(id -> logoFile.set(id, null));
 	}
 }
