@@ -65,9 +65,11 @@ public abstract class FactionsPlugin {
 		Plugin legacyFactions = server.getPluginManager().getPlugin("LegacyFactions");
 		if (legacyFactions != null) {
 			try {
-				return new LegacyFactionsWrapper(legacyFactions);
+				FactionsPlugin wrapper = new LegacyFactionsWrapper(legacyFactions);
+				server.getLogger().info("[factionlogo] hooked into LegacyFactions.");
+				return wrapper;
 			} catch (InvalidPluginException e) {
-				server.getLogger().warning("[factionlogo] failed to hook into LegacyFactions");
+				server.getLogger().warning("[factionlogo] failed to hook into LegacyFactions.");
 			}
 		}
 		
@@ -75,9 +77,11 @@ public abstract class FactionsPlugin {
 		Plugin factions = server.getPluginManager().getPlugin("Factions");
 		if (!(factions == null)) {
 			try {
+				FactionsPlugin wrapper = new FactionsUUIDWrapper(factions);
+				server.getLogger().info("[factionlogo] hooked into Factions.");
 				return new FactionsUUIDWrapper(factions);
 			} catch (InvalidPluginException e) {
-				server.getLogger().warning("[factionlogo] failed to hook into Factions");
+				server.getLogger().warning("[factionlogo] failed to hook into Factions.");
 			}
 		}
 		return null;	
