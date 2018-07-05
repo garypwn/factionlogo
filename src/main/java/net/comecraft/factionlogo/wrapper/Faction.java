@@ -2,7 +2,7 @@ package net.comecraft.factionlogo.wrapper;
 
 import java.util.Collection;
 
-import org.bukkit.entity.Player;
+import org.bukkit.OfflinePlayer;
 
 /**
  * Faction represents a faction of any faction plugin type.
@@ -22,8 +22,8 @@ public interface Faction {
 	public String getName();
 	
 	/**
-	 * Gets all members of this faction.
+	 * Gets all members of this faction, online or offline.
 	 * @return A collection of all the players in this faction.
 	 */
-	public Collection<Player> getMembers();
+	public Collection<OfflinePlayer> getMembers();
 }

@@ -103,7 +103,7 @@ public class SetLogo implements CommandExecutor {
 		String message = String.format(lang.getString("setlogo.success"), sender.getName(), faction.getName(), logo);
 		faction.getMembers()
 		.stream()
-		.filter(player -> player.isOnline())
+		.filter(player -> player != null && player.isOnline())
 		.map(player -> player.getPlayer())
 		.forEach(player -> player.sendMessage(message));
 		

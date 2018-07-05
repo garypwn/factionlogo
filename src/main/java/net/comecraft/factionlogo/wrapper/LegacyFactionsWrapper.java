@@ -5,7 +5,6 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.bukkit.OfflinePlayer;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 
@@ -126,7 +125,7 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 			}
 
 			@Override
-			public Collection<Player> getMembers() {
+			public Collection<OfflinePlayer> getMembers() {
 				return faction.getFPlayers().stream().map(FPlayer::getPlayer)
 						.collect(Collectors.toSet());
 			}
