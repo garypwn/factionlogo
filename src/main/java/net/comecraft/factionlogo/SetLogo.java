@@ -100,7 +100,11 @@ public class SetLogo implements CommandExecutor {
 		
 		// Notify members
 		String message = String.format(lang.getString("setlogo.success"), sender.getName(), faction.getName(), logo);
-		faction.getMembers().forEach(player -> player.sendMessage(message));
+		faction.getMembers()
+		.stream()
+		.filter(player -> player.isOnline())
+		.map(player -> player.getPlayer())
+		.forEach(player -> player.sendMessage(message));
 		
 		return true;
 	}
