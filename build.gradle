@@ -32,7 +32,7 @@ dependencies {
 
 	compileOnly group: "org.spigotmc", name: "spigot-api", version: "1.12.2-R0.1-SNAPSHOT";
 	
-	compileOnly group: "me.clip", name: "placeholderapi", version: "2.8.2";
+	compileOnly group: "me.clip", name: "placeholderapi", version: "2.9.1";
 	
 	compileOnly files("lib/LegacyFactions.jar")
 	compileOnly files("lib/FactionsUUID.jar")

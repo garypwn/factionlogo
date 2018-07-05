@@ -3,8 +3,8 @@ package net.comecraft.factionlogo.wrapper;
 import java.util.Collection;
 import java.util.Optional;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.Server;
-import org.bukkit.entity.Player;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 
@@ -50,7 +50,7 @@ public abstract class FactionsPlugin {
 	 * @return The player's faction, or an empty optional if the player is
 	 *         factionless.
 	 */
-	public abstract Optional<Faction> getFactionByMember(Player player);
+	public abstract Optional<Faction> getFactionByMember(OfflinePlayer player);
 	
 	/**
 	 * Registers a subcommand in the factions plugin.

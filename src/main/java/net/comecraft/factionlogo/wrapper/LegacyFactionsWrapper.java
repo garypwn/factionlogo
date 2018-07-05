@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
@@ -59,7 +60,7 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 	}
 
 	@Override
-	public Optional<Faction> getFactionByMember(Player player) {
+	public Optional<Faction> getFactionByMember(OfflinePlayer player) {
 		
 		// (Hopefully) get the player's faction
 		net.redstoneore.legacyfactions.entity.Faction legacyFaction = FactionColl.get(player);
