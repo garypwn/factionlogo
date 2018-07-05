@@ -93,6 +93,7 @@ public class SetLogo implements CommandExecutor {
 		// Check for illegal characters
 		if (logo.contains("&")) {
 			sender.sendMessage(lang.getString("setlogo.illegalcharacter"));
+			return true;
 		}
 		
 		// Set the new logo
