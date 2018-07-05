@@ -1,4 +1,4 @@
-package net.comecraft.factionlogo;
+package net.nullcraft.factionlogo;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import net.comecraft.factionlogo.wrapper.FactionsPlugin;
+import net.nullcraft.factionlogo.wrapper.FactionsPlugin;
 
 public class Logos {
 

@@ -1,4 +1,4 @@
-package net.comecraft.factionlogo.wrapper;
+package net.nullcraft.factionlogo.wrapper;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.bukkit.Server;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 
-import net.comecraft.factionlogo.SetLogo;
+import net.nullcraft.factionlogo.SetLogo;
 
 /**
  * FactionsPlugin is a wrapper for the server's factions plugin. It provides

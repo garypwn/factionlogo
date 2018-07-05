@@ -5,8 +5,8 @@ apply plugin: "com.github.johnrengelman.shadow"
 compileJava.options.encoding = "UTF-8"
 
 allprojects {
-	version = "0.2-SNAPSHOT"
-	group = "net.comecraft"
+	version = "0.3-SNAPSHOT"
+	group = "net.nullcraft"
 }
 
 buildscript {
@@ -42,7 +42,7 @@ jar {
 	manifest {
 		attributes(
 			"Class-Path": configurations.compile.collect { it.getName() }.join(" "),
-			"Main-Class": "net.comecraft.factionlogo.FactionLogoPlugin"
+			"Main-Class": "net.nullcraft.factionlogo.FactionLogoPlugin"
 		)
 	}
 }

@@ -1,11 +1,11 @@
-package net.comecraft.factionlogo;
+package net.nullcraft.factionlogo;
 
 import java.util.Optional;
 
 import org.bukkit.OfflinePlayer;
 import me.clip.placeholderapi.PlaceholderHook;
-import net.comecraft.factionlogo.wrapper.Faction;
-import net.comecraft.factionlogo.wrapper.FactionsPlugin;
+import net.nullcraft.factionlogo.wrapper.Faction;
+import net.nullcraft.factionlogo.wrapper.FactionsPlugin;
 
 public class FactionLogoPlaceholder extends PlaceholderHook {
 

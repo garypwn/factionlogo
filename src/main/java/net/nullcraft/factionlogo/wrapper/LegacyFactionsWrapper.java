@@ -1,4 +1,4 @@
-package net.comecraft.factionlogo.wrapper;
+package net.nullcraft.factionlogo.wrapper;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
 
-import net.comecraft.factionlogo.SetLogo;
+import net.nullcraft.factionlogo.SetLogo;
 import net.redstoneore.legacyfactions.FactionsPluginBase;
 import net.redstoneore.legacyfactions.Permission;
 import net.redstoneore.legacyfactions.cmd.CmdFactions;

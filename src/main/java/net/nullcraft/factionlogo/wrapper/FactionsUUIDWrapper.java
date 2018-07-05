@@ -1,4 +1,4 @@
-package net.comecraft.factionlogo.wrapper;
+package net.nullcraft.factionlogo.wrapper;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -15,7 +15,7 @@ import com.massivecraft.factions.cmd.FCommand;
 import com.massivecraft.factions.struct.Permission;
 import com.massivecraft.factions.zcore.util.TL;
 
-import net.comecraft.factionlogo.SetLogo;
+import net.nullcraft.factionlogo.SetLogo;
 
 /**
  * A wrapper for drtshock/factions

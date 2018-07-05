@@ -1,4 +1,4 @@
-package net.comecraft.factionlogo;
+package net.nullcraft.factionlogo;
 
 import java.io.File;
 
@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.clip.placeholderapi.PlaceholderAPI;
-import net.comecraft.factionlogo.wrapper.FactionsPlugin;
+import net.nullcraft.factionlogo.wrapper.FactionsPlugin;
 
 public class FactionLogoPlugin extends JavaPlugin {
 	

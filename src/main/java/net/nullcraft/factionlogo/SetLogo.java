@@ -1,4 +1,4 @@
-package net.comecraft.factionlogo;
+package net.nullcraft.factionlogo;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,8 +11,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
-import net.comecraft.factionlogo.wrapper.Faction;
-import net.comecraft.factionlogo.wrapper.FactionsPlugin;
+import net.nullcraft.factionlogo.wrapper.Faction;
+import net.nullcraft.factionlogo.wrapper.FactionsPlugin;
 
 public class SetLogo implements CommandExecutor {
 

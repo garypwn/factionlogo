@@ -1,5 +1,5 @@
 name: factionlogo
-main: net.comecraft.factionlogo.FactionLogoPlugin
+main: net.nullcraft.factionlogo.FactionLogoPlugin
 author: garypwn
 version: ${version}
 softdepend: [LegacyFactions, Factions, PlaceholderAPI]
