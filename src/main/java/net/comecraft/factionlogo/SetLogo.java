@@ -87,16 +87,9 @@ public class SetLogo implements CommandExecutor {
 			return true;
 		}
 		
-		// Check length
-		if (logo.length() > 1) {
-			sender.sendMessage(lang.getString("setlogo.wronglength"));
-			return true;
-		}
-		
-		// Check for illegal characters
-		if (logo.contains("&")) {
-			sender.sendMessage(lang.getString("setlogo.illegalcharacter"));
-			return true;
+		// Check validity
+		if (!logo.matches("^(&[lmno])*([^&\\s])$")) {
+			sender.sendMessage("setlogo.invalid");
 		}
 		
 		// Set the new logo
