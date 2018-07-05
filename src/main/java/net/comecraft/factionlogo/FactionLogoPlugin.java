@@ -21,12 +21,12 @@ public class FactionLogoPlugin extends JavaPlugin {
 	public void onEnable() {
 		
 		// Try to get the server's factions plugin
-		getLogger().info("[factionlogo] Attempting to hook into factions");
+		getLogger().info("Attempting to hook into factions");
 		factions = FactionsPlugin.getFactionsPlugin(getServer());
 		
 		// Disable if there is no factions plugin
 		if (factions == null) {
-			getLogger().severe("[factionlogo] could not find a factions plugin. Disabling factionlogo.");
+			getLogger().severe("Could not find a factions plugin. Disabling factionlogo.");
 			getServer().getPluginManager().disablePlugin(this);
 		}
 			
@@ -37,7 +37,7 @@ public class FactionLogoPlugin extends JavaPlugin {
 		}
 		
 		this.lang = YamlConfiguration.loadConfiguration(langFile);
-		FileConfiguration logoFile = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "logos.yml"));
+		File logoFile = new File(getDataFolder(), "logos.yml");
 		this.logos = new Logos(logoFile, factions);
 		
 		// Register set logo command
@@ -48,9 +48,9 @@ public class FactionLogoPlugin extends JavaPlugin {
 		// Try to hook into placeholderAPI
 		if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {
 			PlaceholderAPI.registerPlaceholderHook(this.getName(), new FactionLogoPlaceholder(factions, logos));
-			getLogger().info("[factionlogo] Successfully hooked into placeholder API");
+			getLogger().info("Successfully hooked into placeholder API");
 		} else {
-			getLogger().warning("[factionlogo] could not find placeholder API.");
+			getLogger().warning("Could not find placeholder API.");
 		}
 	}
 }

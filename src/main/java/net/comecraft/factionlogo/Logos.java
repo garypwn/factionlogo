@@ -1,16 +1,23 @@
 package net.comecraft.factionlogo;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 import net.comecraft.factionlogo.wrapper.FactionsPlugin;
 
 public class Logos {
 
-	private final FileConfiguration logoFile;
+	private final File logoFile;
+	private final FileConfiguration logoConfiguration;
 	private final FactionsPlugin factions;
 	
-	public Logos(FileConfiguration logoFile, FactionsPlugin factions) {
+	public Logos(File logoFile, FactionsPlugin factions) {
 		this.logoFile = logoFile;
+		this.logoConfiguration = YamlConfiguration.loadConfiguration(logoFile);
 		this.factions = factions;
 	}
 
@@ -21,7 +28,7 @@ public class Logos {
 	 */
 	public boolean isAvailable(String logo) {
 		cleanupLogos();
-		return !logoFile.getValues(false).values().contains(logo);
+		return !logoConfiguration.getValues(false).values().contains(logo);
 	}
 	
 	/**
@@ -30,7 +37,12 @@ public class Logos {
 	 * @param logo The faction's logo.
 	 */
 	public void setLogo(String id, String logo) {
-		logoFile.set(id, logo);
+		logoConfiguration.set(id, logo);
+		try {
+			logoConfiguration.save(logoFile);
+		} catch (IOException e) {
+			Bukkit.getLogger().warning("[factionlogo] Could not save to logos.yml");
+		}
 	}
 	
 	/**
@@ -39,7 +51,7 @@ public class Logos {
 	 * @return The faction's logo.
 	 */
 	public String getLogo(String id) {
-		return logoFile.getString(id);
+		return logoConfiguration.getString(id);
 	}
 	
 	/**
@@ -47,12 +59,12 @@ public class Logos {
 	 */
 	public void cleanupLogos() {
 		
-		logoFile.getKeys(false).stream()
+		logoConfiguration.getKeys(false).stream()
 
 				// Filter out entries for factions that actually exist.
 				.filter(faction -> !factions.getFactionById(faction).isPresent())
 
 				// Remove entries for factions that don't exist.
-				.forEach(id -> logoFile.set(id, null));
+				.forEach(id -> logoConfiguration.set(id, null));
 	}
 }
