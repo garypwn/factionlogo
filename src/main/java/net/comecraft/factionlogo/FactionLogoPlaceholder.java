@@ -30,6 +30,8 @@ public class FactionLogoPlaceholder extends PlaceholderHook {
 		
 		String result = logos.getLogo(faction.get().getId());
 		
+		if (result == null) return "";
+		
 		// placeholder: %factionslogo_space%
 		if (identifier.equals("space")) return result + " ";
 		return result;		
