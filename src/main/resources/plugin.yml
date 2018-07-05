@@ -3,3 +3,11 @@ main: net.comecraft.factionlogo.FactionLogoPlugin
 author: garypwn
 version: ${version}
 softdepend: [LegacyFactions, Factions, PlaceholderAPI]
+commands:
+    setlogo:
+        description: Set a faction logo.
+        usage: /setlogo <TARGET> <LOGO>
+permissions:
+    factionlogo.any:
+        description: Set any faction's logo.
+        default: op
