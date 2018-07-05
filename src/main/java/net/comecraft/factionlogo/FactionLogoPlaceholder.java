@@ -12,6 +12,17 @@ public class FactionLogoPlaceholder extends PlaceholderHook {
 	private FactionsPlugin factions;
 	private Logos logos;
 	
+	/**
+	 * Create a new placeholder hook with a factions plugin and logos
+	 * @param factions This placeholder hook's factions plugin.
+	 * @param logos This placeholder hook's logos.
+	 */
+	public FactionLogoPlaceholder(FactionsPlugin factions, Logos logos) {
+		super();
+		this.factions = factions;
+		this.logos = logos;
+	}
+
 	@Override
 	public String onRequest(OfflinePlayer player, String identifier) {
 		Optional<Faction> faction = factions.getFactionByMember(player);
