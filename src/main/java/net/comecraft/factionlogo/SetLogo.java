@@ -89,7 +89,8 @@ public class SetLogo implements CommandExecutor {
 		
 		// Check validity
 		if (!logo.matches("^(&[lmno])*([^&\\s])$")) {
-			sender.sendMessage("setlogo.invalid");
+			sender.sendMessage(lang.getString("setlogo.invalid"));
+			return true;
 		}
 		
 		// Set the new logo
