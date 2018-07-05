@@ -40,7 +40,10 @@ public class SetLogo implements CommandExecutor {
 		
 		// Try by player name
 		if (!target.isPresent()) {
-			target = factions.getFactionByMember(Bukkit.getPlayer(args[0]));
+			Player player = Bukkit.getPlayer(args[0]);
+			if (player != null) {
+				target = factions.getFactionByMember(Bukkit.getPlayer(args[0]));
+			}
 		}
 		
 		// Give up
