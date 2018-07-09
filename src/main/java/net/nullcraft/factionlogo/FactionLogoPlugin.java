@@ -12,7 +12,7 @@ import net.nullcraft.factionlogo.wrapper.FactionsPlugin;
 public class FactionLogoPlugin extends JavaPlugin {
 	
 	private FactionsPlugin factions;
-	private Logos logos;
+	private LogoCollection logos;
 	private FileConfiguration lang;
 	private SetLogo setLogoCommand;
 	
@@ -38,7 +38,7 @@ public class FactionLogoPlugin extends JavaPlugin {
 		
 		this.lang = YamlConfiguration.loadConfiguration(langFile);
 		File logoFile = new File(getDataFolder(), "logos.yml");
-		this.logos = new Logos(logoFile, factions);
+		this.logos = new LogoCollection(logoFile, factions);
 		
 		// Register set logo command
 		this.setLogoCommand = new SetLogo(lang, factions, logos);

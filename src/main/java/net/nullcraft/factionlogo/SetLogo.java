@@ -18,9 +18,9 @@ public class SetLogo implements CommandExecutor {
 
 	private FileConfiguration lang;
 	private FactionsPlugin factions;
-	private Logos logos;
+	private LogoCollection logos;
 	
-	public SetLogo(FileConfiguration lang, FactionsPlugin factions, Logos logos) {
+	public SetLogo(FileConfiguration lang, FactionsPlugin factions, LogoCollection logos) {
 		super();
 		this.lang = lang;
 		this.factions = factions;
