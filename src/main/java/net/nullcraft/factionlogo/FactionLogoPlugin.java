@@ -2,8 +2,6 @@ package net.nullcraft.factionlogo;
 
 import java.io.File;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -13,9 +11,7 @@ public class FactionLogoPlugin extends JavaPlugin {
 	
 	private FactionsPlugin factions;
 	private LogoCollection logos;
-	private FileConfiguration lang;
 	private SetLogo setLogoCommand;
-	
 	
 	@Override
 	public void onEnable() {
@@ -29,19 +25,15 @@ public class FactionLogoPlugin extends JavaPlugin {
 			getLogger().severe("Could not find a factions plugin. Disabling factionlogo.");
 			getServer().getPluginManager().disablePlugin(this);
 		}
-			
-		// Get resource files
-		File langFile = new File(getDataFolder(), "lang.yml");
-		if (!langFile.exists()) {
-			this.saveResource("lang.yml", false);
-		}
 		
-		this.lang = YamlConfiguration.loadConfiguration(langFile);
+		// Initialize config
+		Configuration config = new Configuration(this);
+		
 		File logoFile = new File(getDataFolder(), "logos.yml");
 		this.logos = new LogoCollection(logoFile, factions);
 		
 		// Register set logo command
-		this.setLogoCommand = new SetLogo(lang, factions, logos);
+		this.setLogoCommand = new SetLogo(config, factions, logos);
 		getCommand("setlogo").setExecutor(setLogoCommand);
 		factions.registerSubCommand(setLogoCommand);
 

@@ -96,8 +96,8 @@ public class FactionsUUIDWrapper extends FactionsPlugin {
 			// Initialize
 			{
 				// Add our command's aliases and args
-				this.aliases.addAll(command.getFCommandAliases());
-				this.requiredArgs.addAll(command.getFCommandArgs());
+				this.aliases.addAll(command.getConfig().getFCommandAliases());
+				this.requiredArgs.add("logo");
 				
 				// Copied from /f tag
 				this.permission = Permission.TAG.node;
