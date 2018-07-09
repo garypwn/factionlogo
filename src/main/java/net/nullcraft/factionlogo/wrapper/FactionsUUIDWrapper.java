@@ -29,7 +29,7 @@ public class FactionsUUIDWrapper extends FactionsPlugin {
 	 * 
 	 * @param plugin
 	 *            The plugin to wrap
-	 * @throws ClassCastException
+	 * @throws InvalidPluginException
 	 *             if the plugin is not an instance of com.massivecraft.factions
 	 *             
 	 */

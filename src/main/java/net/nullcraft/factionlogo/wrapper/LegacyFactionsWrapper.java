@@ -26,7 +26,7 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 	 * 
 	 * @param plugin
 	 *            The plugin to wrap
-	 * @throws ClassCastException
+	 * @throws InvalidPluginException
 	 *             if the plugin is not an instance of
 	 *             redstoneore.legacyfactions.FactionsPluginBase
 	 */

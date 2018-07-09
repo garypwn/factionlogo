@@ -67,7 +67,6 @@ public abstract class FactionsPlugin {
 	 *            The server to get the FactionsPlugin for.
 	 * @return A wrapper for this server's factions plugin, or null if there is no
 	 *         supported factions plugin installed.
-	 * @throws InvalidPluginException 
 	 */
 	public static FactionsPlugin getFactionsPlugin(Server server) {
 		
