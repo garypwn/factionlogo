@@ -1,6 +1,5 @@
 apply plugin: "java-library"
 apply plugin: "maven"
-apply plugin: "com.github.johnrengelman.shadow"
 
 compileJava.options.encoding = "UTF-8"
 
@@ -12,9 +11,6 @@ allprojects {
 buildscript {
 	repositories {
 		jcenter()
-	}
-	dependencies {
-		classpath "com.github.jengelman.gradle.plugins:shadow:2.0.0"
 	}
 }
 
