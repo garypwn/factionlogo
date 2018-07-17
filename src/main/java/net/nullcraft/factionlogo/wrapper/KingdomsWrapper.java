@@ -2,12 +2,16 @@ package net.nullcraft.factionlogo.wrapper;
 
 import java.util.Collection;
 import java.util.Optional;
+import java.util.Queue;
 import java.util.stream.Collectors;
 
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.InvalidPluginException;
 import org.bukkit.plugin.Plugin;
+import org.kingdoms.commands.KCommand;
 import org.kingdoms.constants.kingdom.Kingdom;
 import org.kingdoms.constants.kingdom.OfflineKingdom;
 import org.kingdoms.main.Kingdoms;
@@ -63,7 +67,40 @@ public class KingdomsWrapper extends FactionsPlugin {
 
 	@Override
 	public void registerSubCommand(SetLogo command) {
-		// TODO Auto-generated method stub
+		KCommand kcmd = new KCommand() {
+
+			@Override
+			public boolean canExecute(CommandSender sender) {
+				return Kingdoms.getCmdExe().getCommands().get("setlore").canExecute(sender);
+			}
+
+			@Override
+			public void execute(CommandSender sender, Queue<String> args) {
+				if (!(sender instanceof Player)) return;
+				command.setLogo((Player) sender, args.poll());
+			}
+
+			@Override
+			public int getArgsAmount() {
+				return command.getFCommandArgs().size();
+			}
+
+			@Override
+			public String getDescription() {
+				return command.getLang().getString("setlogo.description");
+			}
+
+			@Override
+			public String[] getUsage() {
+				return command.getFCommandArgs().toArray(new String[0]);
+			}
+			
+		};
+		
+		// Add our kcmd to each alias in the kingdoms command map
+		for (String alias : command.getFCommandAliases()) {
+			Kingdoms.getCmdExe().getCommands().put(alias, kcmd);
+		}
 		
 	}
 
