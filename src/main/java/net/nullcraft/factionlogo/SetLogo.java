@@ -120,10 +120,6 @@ public class SetLogo implements CommandExecutor {
 		ArrayList<String> aliases = new ArrayList<String>();
 		aliases.add("logo");
 		aliases.add("setlogo");
-		aliases.add("icon");
-		aliases.add("seticon");
-		aliases.add("chattag");
-		aliases.add("setchattag");
 		return aliases;
 	}
 
