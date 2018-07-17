@@ -51,14 +51,14 @@ public class KingdomsWrapper extends FactionsPlugin {
 
 	@Override
 	public Optional<Faction> getFactionById(String id) {
-		Kingdom kingdom = GameManagement.getKingdomManager().getOrLoadKingdom(id);
-		return Optional.ofNullable(getFactionWrapper(kingdom));
+		// Kingdoms don't appear to have unique ids, instead the names are unique and immutable.
+		return getFactionByName(id);
 	}
 
 	@Override
 	public Optional<Faction> getFactionByMember(OfflinePlayer player) {
-		GameManagement.getPlayerManager().getOfflineKingdomPlayer(player);
-		return null;
+		String name = GameManagement.getPlayerManager().getOfflineKingdomPlayer(player).getKingdomName();
+		return getFactionByName(name);
 	}
 
 	@Override
