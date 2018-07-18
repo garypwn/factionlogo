@@ -64,6 +64,7 @@ public class SetLogo implements CommandExecutor {
 		// Player is factionless
 		if (!target.isPresent()) {
 			player.sendMessage(config.getLangString("setlogo.notfound"));
+			return;
 		}
 		
 		setLogo(player, target.get(), logo);
