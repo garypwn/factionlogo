@@ -1,14 +1,11 @@
 package net.nullcraft.factionlogo;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Optional;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
 import net.nullcraft.factionlogo.wrapper.Faction;
@@ -16,13 +13,13 @@ import net.nullcraft.factionlogo.wrapper.FactionsPlugin;
 
 public class SetLogo implements CommandExecutor {
 
-	private FileConfiguration lang;
+	private Configuration config;
 	private FactionsPlugin factions;
-	private Logos logos;
+	private LogoCollection logos;
 	
-	public SetLogo(FileConfiguration lang, FactionsPlugin factions, Logos logos) {
+	public SetLogo(Configuration config, FactionsPlugin factions, LogoCollection logos) {
 		super();
-		this.lang = lang;
+		this.config = config;
 		this.factions = factions;
 		this.logos = logos;
 	}
@@ -48,7 +45,7 @@ public class SetLogo implements CommandExecutor {
 		
 		// Give up
 		if (!target.isPresent()) {
-			sender.sendMessage(lang.getString("setlogo.notfound"));
+			sender.sendMessage(config.getLangString("setlogo.notfound"));
 			return false;
 		}
 		
@@ -66,7 +63,7 @@ public class SetLogo implements CommandExecutor {
 		
 		// Player is factionless
 		if (!target.isPresent()) {
-			player.sendMessage(lang.getString("setlogo.notfound"));
+			player.sendMessage(config.getLangString("setlogo.notfound"));
 		}
 		
 		setLogo(player, target.get(), logo);
@@ -83,13 +80,13 @@ public class SetLogo implements CommandExecutor {
 		
 		// Check availability
 		if (!logos.isAvailable(logo)) {
-			sender.sendMessage(lang.getString("setlogo.taken"));
+			sender.sendMessage(config.getLangString("setlogo.taken"));
 			return true;
 		}
 		
 		// Check validity
-		if (!logo.matches("^(&[lmno])*([^&\\s])$")) {
-			sender.sendMessage(lang.getString("setlogo.invalid"));
+		if (!config.getValidLogoPattern().matcher(logo).matches()) {
+			sender.sendMessage(config.getLangString("setlogo.invalid"));
 			return true;
 		}
 		
@@ -97,7 +94,7 @@ public class SetLogo implements CommandExecutor {
 		logos.setLogo(faction.getId(), logo);
 		
 		// Notify members
-		String message = String.format(lang.getString("setlogo.success"), sender.getName(), faction.getName(), logo);
+		String message = String.format(config.getLangString("setlogo.success"), sender.getName(), faction.getName(), logo);
 		faction.getMembers()
 		.stream()
 		.filter(player -> player != null && player.isOnline())
@@ -107,25 +104,8 @@ public class SetLogo implements CommandExecutor {
 		return true;
 	}
 	
-	public FileConfiguration getLang() {
-		return lang;
-	}
 
-	/**
-	 * Gets the list of /f [alias] aliases to be used in a FCommand.
-	 * 
-	 * @return A list containing the faction command aliases of this command.
-	 */
-	public Collection<String> getFCommandAliases() {
-		ArrayList<String> aliases = new ArrayList<String>();
-		aliases.add("logo");
-		aliases.add("setlogo");
-		return aliases;
-	}
-
-	public Collection<String> getFCommandArgs() {
-		ArrayList<String> requiredArgs = new ArrayList<String>();
-		requiredArgs.add("logo");
-		return requiredArgs;
+	public Configuration getConfig() {
+		return config;
 	}
 }

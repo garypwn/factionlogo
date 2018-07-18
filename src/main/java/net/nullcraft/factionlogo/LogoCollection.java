@@ -9,13 +9,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import net.nullcraft.factionlogo.wrapper.FactionsPlugin;
 
-public class Logos {
+public class LogoCollection {
 
 	private final File logoFile;
 	private final FileConfiguration logoConfiguration;
 	private final FactionsPlugin factions;
 	
-	public Logos(File logoFile, FactionsPlugin factions) {
+	public LogoCollection(File logoFile, FactionsPlugin factions) {
 		this.logoFile = logoFile;
 		this.logoConfiguration = YamlConfiguration.loadConfiguration(logoFile);
 		this.factions = factions;

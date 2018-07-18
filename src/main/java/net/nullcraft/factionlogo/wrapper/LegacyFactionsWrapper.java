@@ -26,7 +26,7 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 	 * 
 	 * @param plugin
 	 *            The plugin to wrap
-	 * @throws ClassCastException
+	 * @throws InvalidPluginException
 	 *             if the plugin is not an instance of
 	 *             redstoneore.legacyfactions.FactionsPluginBase
 	 */
@@ -82,8 +82,8 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 			// Initialize
 			{
 				// Add our command's aliases and args
-				this.aliases.addAll(command.getFCommandAliases());
-				this.requiredArgs.addAll(command.getFCommandArgs());
+				this.aliases.addAll(command.getConfig().getFCommandAliases());
+				this.requiredArgs.add("logo");
 
 				// Copied from /f tag
 				this.permission = Permission.TAG.getNode();
@@ -96,7 +96,7 @@ public class LegacyFactionsWrapper extends FactionsPlugin {
 			
 			@Override
 			public String getUsageTranslation() {
-				return command.getLang().getString("setlogo.description");
+				return command.getConfig().getLangString("setlogo.description");
 			}
 
 			@Override
