@@ -93,6 +93,18 @@ public abstract class FactionsPlugin {
 				server.getLogger().warning("[factionlogo] failed to hook into Factions.");
 			}
 		}
+		
+		// Check for kingdoms
+		Plugin kingdoms = server.getPluginManager().getPlugin("Kingdoms");
+		if (!(kingdoms == null)) {
+			try {
+				KingdomsWrapper wrapper = new KingdomsWrapper(kingdoms);
+				server.getLogger().info("[factionlogo] hooked into Kingdoms");
+				return wrapper;
+			} catch (InvalidPluginException e) {
+				server.getLogger().warning("[factionlogo] failed to hook into Factions.");
+			}
+		}
 		return null;	
 	}
 }
