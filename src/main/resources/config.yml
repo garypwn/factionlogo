@@ -1,0 +1,2 @@
+valid-logo-pattern: '^(&[lmno])*([^&\\s])$'
+fcommand-aliases: [logo, setlogo]
