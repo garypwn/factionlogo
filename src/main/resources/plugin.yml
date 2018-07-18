@@ -2,7 +2,7 @@ name: factionlogo
 main: net.nullcraft.factionlogo.FactionLogoPlugin
 author: garypwn
 version: ${version}
-softdepend: [LegacyFactions, Factions, PlaceholderAPI]
+softdepend: [LegacyFactions, Factions, Kingdoms, PlaceholderAPI]
 commands:
     setlogo:
         description: Set a faction logo.
