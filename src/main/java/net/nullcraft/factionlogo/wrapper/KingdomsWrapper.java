@@ -50,7 +50,8 @@ public class KingdomsWrapper extends FactionsPlugin {
 	@Override
 	public Optional<Faction> getFactionByName(String name) {
 		Kingdom kingdom = GameManagement.getKingdomManager().getOrLoadKingdom(name);
-		return Optional.ofNullable(getFactionWrapper(kingdom));
+		if (kingdom == null) return Optional.empty();
+		return Optional.of(getFactionWrapper(kingdom));
 	}
 
 	@Override
