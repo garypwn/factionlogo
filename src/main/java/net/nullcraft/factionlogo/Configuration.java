@@ -46,8 +46,7 @@ public class Configuration {
 	 * @return The string
 	 */
 	public String getLangString(String path) {
-		// TODO
-		return null;
+		return lang.getString(path);
 	}
 	
 	/**
@@ -55,7 +54,6 @@ public class Configuration {
 	 * @return A collection containing the f command aliases.
 	 */
 	public Collection<String> getFCommandAliases() {
-		// TODO
-		return null;
+		return plugin.getConfig().getStringList("fcommand-aliases");
 	}
 }
