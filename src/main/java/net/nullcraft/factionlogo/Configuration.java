@@ -24,6 +24,9 @@ public class Configuration {
 		
 		this.plugin = plugin;
 		
+		// Save default values
+		plugin.saveDefaultConfig();
+		
 		// Get resource files
 		File langFile = new File(plugin.getDataFolder(), "lang.yml");
 		if (!langFile.exists()) {
