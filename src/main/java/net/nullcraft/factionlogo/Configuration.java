@@ -1,9 +1,11 @@
 package net.nullcraft.factionlogo;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.regex.Pattern;
 
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,6 +17,7 @@ public class Configuration {
 	
 	private JavaPlugin plugin;
 	private FileConfiguration lang;
+	private File langFile;
 	
 	/**
 	 * Constructs a Configuration
@@ -28,7 +31,7 @@ public class Configuration {
 		plugin.saveDefaultConfig();
 		
 		// Get resource files
-		File langFile = new File(plugin.getDataFolder(), "lang.yml");
+		langFile = new File(plugin.getDataFolder(), "lang.yml");
 		if (!langFile.exists()) {
 			plugin.saveResource("lang.yml", false);
 		}
@@ -58,5 +61,17 @@ public class Configuration {
 	 */
 	public Collection<String> getFCommandAliases() {
 		return plugin.getConfig().getStringList("fcommand-aliases");
+	}
+	
+	/**
+	 * Reloads configuration files from disk
+	 */
+	public void reload() {
+		plugin.reloadConfig();
+		try {
+			lang.load(langFile);
+		} catch (IOException | InvalidConfigurationException e) {
+			// Swallow dat boi
+		}
 	}
 }

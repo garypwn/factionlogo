@@ -2,6 +2,8 @@ package net.nullcraft.factionlogo;
 
 import java.io.File;
 
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -12,6 +14,7 @@ public class FactionLogoPlugin extends JavaPlugin {
 	private FactionsPlugin factions;
 	private LogoCollection logos;
 	private SetLogo setLogoCommand;
+	private Configuration config;
 	
 	@Override
 	public void onEnable() {
@@ -27,7 +30,7 @@ public class FactionLogoPlugin extends JavaPlugin {
 		}
 		
 		// Initialize config
-		Configuration config = new Configuration(this);
+		config = new Configuration(this);
 		
 		File logoFile = new File(getDataFolder(), "logos.yml");
 		this.logos = new LogoCollection(logoFile, factions);
@@ -44,5 +47,15 @@ public class FactionLogoPlugin extends JavaPlugin {
 		} else {
 			getLogger().warning("Could not find placeholder API.");
 		}
+	}
+	
+	/**
+	 * Reloads the plugin config
+	 */
+	@Override
+	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+		config.reload();
+		sender.sendMessage(config.getLangString("reload"));
+		return true;
 	}
 }
