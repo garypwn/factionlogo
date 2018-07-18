@@ -39,6 +39,9 @@ public class FactionLogoPlugin extends JavaPlugin {
 		this.setLogoCommand = new SetLogo(config, factions, logos);
 		getCommand("setlogo").setExecutor(setLogoCommand);
 		factions.registerSubCommand(setLogoCommand);
+		
+		// Register reload config command
+		getCommand("factionlogo").setExecutor(this);
 
 		// Try to hook into placeholderAPI
 		if (getServer().getPluginManager().isPluginEnabled("PlaceholderAPI")) {

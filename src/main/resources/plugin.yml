@@ -7,6 +7,9 @@ commands:
     setlogo:
         description: Set a faction logo.
         usage: /setlogo <TARGET> <LOGO>
+    factionlogo:
+        description: Reload configs
+        usage: /factionlogo
 permissions:
     factionlogo.any:
         description: Set any faction's logo.
