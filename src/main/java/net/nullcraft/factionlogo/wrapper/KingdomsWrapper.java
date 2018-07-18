@@ -82,23 +82,23 @@ public class KingdomsWrapper extends FactionsPlugin {
 
 			@Override
 			public int getArgsAmount() {
-				return command.getFCommandArgs().size();
+				return 1;
 			}
 
 			@Override
 			public String getDescription() {
-				return command.getLang().getString("setlogo.description");
+				return command.getConfig().getLangString("setlogo.description");
 			}
 
 			@Override
 			public String[] getUsage() {
-				return command.getFCommandArgs().toArray(new String[0]);
+				return new String[0];
 			}
 			
 		};
 		
 		// Add our kcmd to each alias in the kingdoms command map
-		for (String alias : command.getFCommandAliases()) {
+		for (String alias : command.getConfig().getFCommandAliases()) {
 			Kingdoms.getCmdExe().getCommands().put(alias, kcmd);
 		}
 		
