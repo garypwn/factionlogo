@@ -4,7 +4,7 @@ apply plugin: "maven"
 compileJava.options.encoding = "UTF-8"
 
 allprojects {
-	version = "0.3-SNAPSHOT"
+	version = "0.4-SNAPSHOT"
 	group = "net.nullcraft"
 }
 
