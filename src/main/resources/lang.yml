@@ -1,4 +1,4 @@
-reload: [factionlogo] configuration reloaded
+reload: '[factionlogo] configuration reloaded'
 setlogo:
   notfound: Faction not found
   taken: That logo is already in use
